@@ -1,0 +1,398 @@
+模型架构加载成功: /hy-tmp/ultralytics-8.3.184/ultralytics/cfg/models/11/yolo11x.yaml
+Transferred 594/1278 items from pretrained weights
+已加载预训练权重: /hy-tmp/ultralytics-8.3.184/yolo11x.pt
+开始训练阶段 A: yolov11_drone_phaseA
+New https://pypi.org/project/ultralytics/8.3.190 available 😃 Update with 'pip install -U ultralytics'
+Ultralytics 8.3.184 🚀 Python-3.11.12 torch-2.8.0.dev20250505+cu128 CUDA:0 (NVIDIA GeForce RTX 5090, 32120MiB)
+                                                                    CUDA:1 (NVIDIA GeForce RTX 5090, 32120MiB)
+[34m[1mengine/trainer: [0magnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=12, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=/hy-tmp/ultralytics-8.3.184/data/data/data.yaml, degrees=0.0, deterministic=True, device=0,1, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=1000, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=14, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=512, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.001, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=/hy-tmp/ultralytics-8.3.184/ultralytics/cfg/models/11/yolo11x.yaml, momentum=0.937, mosaic=1.0, multi_scale=False, name=yolov11_drone_phaseA3, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=20, perspective=0.0, plots=True, pose=12.0, pretrained=/hy-tmp/ultralytics-8.3.184/yolo11x.pt, profile=False, project=None, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=runs/detect/yolov11_drone_phaseA3, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=16, workspace=None
+Overriding model.yaml nc=80 with nc=4
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1      2784  ultralytics.nn.modules.conv.Conv             [3, 96, 3, 2]                 
+  1                  -1  1    166272  ultralytics.nn.modules.conv.Conv             [96, 192, 3, 2]               
+  2                  -1  2    389760  ultralytics.nn.modules.block.C3k2            [192, 384, 2, True, 0.25]     
+  3                  -1  1   1327872  ultralytics.nn.modules.conv.Conv             [384, 384, 3, 2]              
+  4                  -1  2   1553664  ultralytics.nn.modules.block.C3k2            [384, 768, 2, True, 0.25]     
+  5                  -1  1   5309952  ultralytics.nn.modules.conv.Conv             [768, 768, 3, 2]              
+  6                  -1  2   5022720  ultralytics.nn.modules.block.C3k2            [768, 768, 2, True]           
+  7                  -1  1   5309952  ultralytics.nn.modules.conv.Conv             [768, 768, 3, 2]              
+  8                  -1  2   5022720  ultralytics.nn.modules.block.C3k2            [768, 768, 2, True]           
+  9                  -1  1   1476864  ultralytics.nn.modules.block.SPPF            [768, 768, 5]                 
+ 10                  -1  2   3264768  ultralytics.nn.modules.block.C2PSA           [768, 768, 2]                 
+ 11                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 12             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 13                  -1  2   5612544  ultralytics.nn.modules.block.C3k2            [1536, 768, 2, True]          
+ 14                  -1  1     74642  ultralytics.nn.modules.CBAM.myCBAM           [768]                         
+ 15                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 16             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 17                  -1  2   1700352  ultralytics.nn.modules.block.C3k2            [1536, 384, 2, True]          
+ 18                  -1  1     18938  ultralytics.nn.modules.CBAM.myCBAM           [384]                         
+ 19                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 20             [-1, 2]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 21                  -1  2    426240  ultralytics.nn.modules.block.C3k2            [768, 192, 2, True]           
+ 22                  -1  1      4910  ultralytics.nn.modules.CBAM.myCBAM           [192]                         
+ 23                  -1  1    332160  ultralytics.nn.modules.conv.Conv             [192, 192, 3, 2]              
+ 24            [-1, 16]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 25                  -1  2   1774080  ultralytics.nn.modules.block.C3k2            [1728, 384, 2, True]          
+ 26                  -1  1     18938  ultralytics.nn.modules.CBAM.myCBAM           [384]                         
+ 27                  -1  1   1327872  ultralytics.nn.modules.conv.Conv             [384, 384, 3, 2]              
+ 28            [-1, 13]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 29                  -1  2   5317632  ultralytics.nn.modules.block.C3k2            [1152, 768, 2, True]          
+ 30                  -1  1     74642  ultralytics.nn.modules.CBAM.myCBAM           [768]                         
+ 31                  -1  1   5309952  ultralytics.nn.modules.conv.Conv             [768, 768, 3, 2]              
+ 32            [-1, 10]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 33                  -1  2   5612544  ultralytics.nn.modules.block.C3k2            [1536, 768, 2, True]          
+ 34    [19, 22, 25, 28]  1   3636192  ultralytics.nn.modules.head.Detect           [4, [384, 192, 384, 1152]]    
+YOLO11x summary: 485 layers, 60,088,966 parameters, 60,088,950 gradients
+
+Transferred 1270/1278 items from pretrained weights
+[34m[1mDDP:[0m debug command /usr/local/bin/python -m torch.distributed.run --nproc_per_node 2 --master_port 52119 /root/.config/Ultralytics/DDP/_temp_pivcgxmc139723518198480.py
+Ultralytics 8.3.184 🚀 Python-3.11.12 torch-2.8.0.dev20250505+cu128 CUDA:0 (NVIDIA GeForce RTX 5090, 32120MiB)
+                                                                    CUDA:1 (NVIDIA GeForce RTX 5090, 32120MiB)
+Overriding model.yaml nc=80 with nc=4
+Transferred 594/1278 items from pretrained weights
+Freezing layer 'model.0.conv.weight'
+Freezing layer 'model.0.bn.weight'
+Freezing layer 'model.0.bn.bias'
+Freezing layer 'model.1.conv.weight'
+Freezing layer 'model.1.bn.weight'
+Freezing layer 'model.1.bn.bias'
+Freezing layer 'model.2.cv1.conv.weight'
+Freezing layer 'model.2.cv1.bn.weight'
+Freezing layer 'model.2.cv1.bn.bias'
+Freezing layer 'model.2.cv2.conv.weight'
+Freezing layer 'model.2.cv2.bn.weight'
+Freezing layer 'model.2.cv2.bn.bias'
+Freezing layer 'model.2.m.0.cv1.conv.weight'
+Freezing layer 'model.2.m.0.cv1.bn.weight'
+Freezing layer 'model.2.m.0.cv1.bn.bias'
+Freezing layer 'model.2.m.0.cv2.conv.weight'
+Freezing layer 'model.2.m.0.cv2.bn.weight'
+Freezing layer 'model.2.m.0.cv2.bn.bias'
+Freezing layer 'model.2.m.0.cv3.conv.weight'
+Freezing layer 'model.2.m.0.cv3.bn.weight'
+Freezing layer 'model.2.m.0.cv3.bn.bias'
+Freezing layer 'model.2.m.0.m.0.cv1.conv.weight'
+Freezing layer 'model.2.m.0.m.0.cv1.bn.weight'
+Freezing layer 'model.2.m.0.m.0.cv1.bn.bias'
+Freezing layer 'model.2.m.0.m.0.cv2.conv.weight'
+Freezing layer 'model.2.m.0.m.0.cv2.bn.weight'
+Freezing layer 'model.2.m.0.m.0.cv2.bn.bias'
+Freezing layer 'model.2.m.0.m.1.cv1.conv.weight'
+Freezing layer 'model.2.m.0.m.1.cv1.bn.weight'
+Freezing layer 'model.2.m.0.m.1.cv1.bn.bias'
+Freezing layer 'model.2.m.0.m.1.cv2.conv.weight'
+Freezing layer 'model.2.m.0.m.1.cv2.bn.weight'
+Freezing layer 'model.2.m.0.m.1.cv2.bn.bias'
+Freezing layer 'model.2.m.1.cv1.conv.weight'
+Freezing layer 'model.2.m.1.cv1.bn.weight'
+Freezing layer 'model.2.m.1.cv1.bn.bias'
+Freezing layer 'model.2.m.1.cv2.conv.weight'
+Freezing layer 'model.2.m.1.cv2.bn.weight'
+Freezing layer 'model.2.m.1.cv2.bn.bias'
+Freezing layer 'model.2.m.1.cv3.conv.weight'
+Freezing layer 'model.2.m.1.cv3.bn.weight'
+Freezing layer 'model.2.m.1.cv3.bn.bias'
+Freezing layer 'model.2.m.1.m.0.cv1.conv.weight'
+Freezing layer 'model.2.m.1.m.0.cv1.bn.weight'
+Freezing layer 'model.2.m.1.m.0.cv1.bn.bias'
+Freezing layer 'model.2.m.1.m.0.cv2.conv.weight'
+Freezing layer 'model.2.m.1.m.0.cv2.bn.weight'
+Freezing layer 'model.2.m.1.m.0.cv2.bn.bias'
+Freezing layer 'model.2.m.1.m.1.cv1.conv.weight'
+Freezing layer 'model.2.m.1.m.1.cv1.bn.weight'
+Freezing layer 'model.2.m.1.m.1.cv1.bn.bias'
+Freezing layer 'model.2.m.1.m.1.cv2.conv.weight'
+Freezing layer 'model.2.m.1.m.1.cv2.bn.weight'
+Freezing layer 'model.2.m.1.m.1.cv2.bn.bias'
+Freezing layer 'model.3.conv.weight'
+Freezing layer 'model.3.bn.weight'
+Freezing layer 'model.3.bn.bias'
+Freezing layer 'model.4.cv1.conv.weight'
+Freezing layer 'model.4.cv1.bn.weight'
+Freezing layer 'model.4.cv1.bn.bias'
+Freezing layer 'model.4.cv2.conv.weight'
+Freezing layer 'model.4.cv2.bn.weight'
+Freezing layer 'model.4.cv2.bn.bias'
+Freezing layer 'model.4.m.0.cv1.conv.weight'
+Freezing layer 'model.4.m.0.cv1.bn.weight'
+Freezing layer 'model.4.m.0.cv1.bn.bias'
+Freezing layer 'model.4.m.0.cv2.conv.weight'
+Freezing layer 'model.4.m.0.cv2.bn.weight'
+Freezing layer 'model.4.m.0.cv2.bn.bias'
+Freezing layer 'model.4.m.0.cv3.conv.weight'
+Freezing layer 'model.4.m.0.cv3.bn.weight'
+Freezing layer 'model.4.m.0.cv3.bn.bias'
+Freezing layer 'model.4.m.0.m.0.cv1.conv.weight'
+Freezing layer 'model.4.m.0.m.0.cv1.bn.weight'
+Freezing layer 'model.4.m.0.m.0.cv1.bn.bias'
+Freezing layer 'model.4.m.0.m.0.cv2.conv.weight'
+Freezing layer 'model.4.m.0.m.0.cv2.bn.weight'
+Freezing layer 'model.4.m.0.m.0.cv2.bn.bias'
+Freezing layer 'model.4.m.0.m.1.cv1.conv.weight'
+Freezing layer 'model.4.m.0.m.1.cv1.bn.weight'
+Freezing layer 'model.4.m.0.m.1.cv1.bn.bias'
+Freezing layer 'model.4.m.0.m.1.cv2.conv.weight'
+Freezing layer 'model.4.m.0.m.1.cv2.bn.weight'
+Freezing layer 'model.4.m.0.m.1.cv2.bn.bias'
+Freezing layer 'model.4.m.1.cv1.conv.weight'
+Freezing layer 'model.4.m.1.cv1.bn.weight'
+Freezing layer 'model.4.m.1.cv1.bn.bias'
+Freezing layer 'model.4.m.1.cv2.conv.weight'
+Freezing layer 'model.4.m.1.cv2.bn.weight'
+Freezing layer 'model.4.m.1.cv2.bn.bias'
+Freezing layer 'model.4.m.1.cv3.conv.weight'
+Freezing layer 'model.4.m.1.cv3.bn.weight'
+Freezing layer 'model.4.m.1.cv3.bn.bias'
+Freezing layer 'model.4.m.1.m.0.cv1.conv.weight'
+Freezing layer 'model.4.m.1.m.0.cv1.bn.weight'
+Freezing layer 'model.4.m.1.m.0.cv1.bn.bias'
+Freezing layer 'model.4.m.1.m.0.cv2.conv.weight'
+Freezing layer 'model.4.m.1.m.0.cv2.bn.weight'
+Freezing layer 'model.4.m.1.m.0.cv2.bn.bias'
+Freezing layer 'model.4.m.1.m.1.cv1.conv.weight'
+Freezing layer 'model.4.m.1.m.1.cv1.bn.weight'
+Freezing layer 'model.4.m.1.m.1.cv1.bn.bias'
+Freezing layer 'model.4.m.1.m.1.cv2.conv.weight'
+Freezing layer 'model.4.m.1.m.1.cv2.bn.weight'
+Freezing layer 'model.4.m.1.m.1.cv2.bn.bias'
+Freezing layer 'model.5.conv.weight'
+Freezing layer 'model.5.bn.weight'
+Freezing layer 'model.5.bn.bias'
+Freezing layer 'model.6.cv1.conv.weight'
+Freezing layer 'model.6.cv1.bn.weight'
+Freezing layer 'model.6.cv1.bn.bias'
+Freezing layer 'model.6.cv2.conv.weight'
+Freezing layer 'model.6.cv2.bn.weight'
+Freezing layer 'model.6.cv2.bn.bias'
+Freezing layer 'model.6.m.0.cv1.conv.weight'
+Freezing layer 'model.6.m.0.cv1.bn.weight'
+Freezing layer 'model.6.m.0.cv1.bn.bias'
+Freezing layer 'model.6.m.0.cv2.conv.weight'
+Freezing layer 'model.6.m.0.cv2.bn.weight'
+Freezing layer 'model.6.m.0.cv2.bn.bias'
+Freezing layer 'model.6.m.0.cv3.conv.weight'
+Freezing layer 'model.6.m.0.cv3.bn.weight'
+Freezing layer 'model.6.m.0.cv3.bn.bias'
+Freezing layer 'model.6.m.0.m.0.cv1.conv.weight'
+Freezing layer 'model.6.m.0.m.0.cv1.bn.weight'
+Freezing layer 'model.6.m.0.m.0.cv1.bn.bias'
+Freezing layer 'model.6.m.0.m.0.cv2.conv.weight'
+Freezing layer 'model.6.m.0.m.0.cv2.bn.weight'
+Freezing layer 'model.6.m.0.m.0.cv2.bn.bias'
+Freezing layer 'model.6.m.0.m.1.cv1.conv.weight'
+Freezing layer 'model.6.m.0.m.1.cv1.bn.weight'
+Freezing layer 'model.6.m.0.m.1.cv1.bn.bias'
+Freezing layer 'model.6.m.0.m.1.cv2.conv.weight'
+Freezing layer 'model.6.m.0.m.1.cv2.bn.weight'
+Freezing layer 'model.6.m.0.m.1.cv2.bn.bias'
+Freezing layer 'model.6.m.1.cv1.conv.weight'
+Freezing layer 'model.6.m.1.cv1.bn.weight'
+Freezing layer 'model.6.m.1.cv1.bn.bias'
+Freezing layer 'model.6.m.1.cv2.conv.weight'
+Freezing layer 'model.6.m.1.cv2.bn.weight'
+Freezing layer 'model.6.m.1.cv2.bn.bias'
+Freezing layer 'model.6.m.1.cv3.conv.weight'
+Freezing layer 'model.6.m.1.cv3.bn.weight'
+Freezing layer 'model.6.m.1.cv3.bn.bias'
+Freezing layer 'model.6.m.1.m.0.cv1.conv.weight'
+Freezing layer 'model.6.m.1.m.0.cv1.bn.weight'
+Freezing layer 'model.6.m.1.m.0.cv1.bn.bias'
+Freezing layer 'model.6.m.1.m.0.cv2.conv.weight'
+Freezing layer 'model.6.m.1.m.0.cv2.bn.weight'
+Freezing layer 'model.6.m.1.m.0.cv2.bn.bias'
+Freezing layer 'model.6.m.1.m.1.cv1.conv.weight'
+Freezing layer 'model.6.m.1.m.1.cv1.bn.weight'
+Freezing layer 'model.6.m.1.m.1.cv1.bn.bias'
+Freezing layer 'model.6.m.1.m.1.cv2.conv.weight'
+Freezing layer 'model.6.m.1.m.1.cv2.bn.weight'
+Freezing layer 'model.6.m.1.m.1.cv2.bn.bias'
+Freezing layer 'model.7.conv.weight'
+Freezing layer 'model.7.bn.weight'
+Freezing layer 'model.7.bn.bias'
+Freezing layer 'model.8.cv1.conv.weight'
+Freezing layer 'model.8.cv1.bn.weight'
+Freezing layer 'model.8.cv1.bn.bias'
+Freezing layer 'model.8.cv2.conv.weight'
+Freezing layer 'model.8.cv2.bn.weight'
+Freezing layer 'model.8.cv2.bn.bias'
+Freezing layer 'model.8.m.0.cv1.conv.weight'
+Freezing layer 'model.8.m.0.cv1.bn.weight'
+Freezing layer 'model.8.m.0.cv1.bn.bias'
+Freezing layer 'model.8.m.0.cv2.conv.weight'
+Freezing layer 'model.8.m.0.cv2.bn.weight'
+Freezing layer 'model.8.m.0.cv2.bn.bias'
+Freezing layer 'model.8.m.0.cv3.conv.weight'
+Freezing layer 'model.8.m.0.cv3.bn.weight'
+Freezing layer 'model.8.m.0.cv3.bn.bias'
+Freezing layer 'model.8.m.0.m.0.cv1.conv.weight'
+Freezing layer 'model.8.m.0.m.0.cv1.bn.weight'
+Freezing layer 'model.8.m.0.m.0.cv1.bn.bias'
+Freezing layer 'model.8.m.0.m.0.cv2.conv.weight'
+Freezing layer 'model.8.m.0.m.0.cv2.bn.weight'
+Freezing layer 'model.8.m.0.m.0.cv2.bn.bias'
+Freezing layer 'model.8.m.0.m.1.cv1.conv.weight'
+Freezing layer 'model.8.m.0.m.1.cv1.bn.weight'
+Freezing layer 'model.8.m.0.m.1.cv1.bn.bias'
+Freezing layer 'model.8.m.0.m.1.cv2.conv.weight'
+Freezing layer 'model.8.m.0.m.1.cv2.bn.weight'
+Freezing layer 'model.8.m.0.m.1.cv2.bn.bias'
+Freezing layer 'model.8.m.1.cv1.conv.weight'
+Freezing layer 'model.8.m.1.cv1.bn.weight'
+Freezing layer 'model.8.m.1.cv1.bn.bias'
+Freezing layer 'model.8.m.1.cv2.conv.weight'
+Freezing layer 'model.8.m.1.cv2.bn.weight'
+Freezing layer 'model.8.m.1.cv2.bn.bias'
+Freezing layer 'model.8.m.1.cv3.conv.weight'
+Freezing layer 'model.8.m.1.cv3.bn.weight'
+Freezing layer 'model.8.m.1.cv3.bn.bias'
+Freezing layer 'model.8.m.1.m.0.cv1.conv.weight'
+Freezing layer 'model.8.m.1.m.0.cv1.bn.weight'
+Freezing layer 'model.8.m.1.m.0.cv1.bn.bias'
+Freezing layer 'model.8.m.1.m.0.cv2.conv.weight'
+Freezing layer 'model.8.m.1.m.0.cv2.bn.weight'
+Freezing layer 'model.8.m.1.m.0.cv2.bn.bias'
+Freezing layer 'model.8.m.1.m.1.cv1.conv.weight'
+Freezing layer 'model.8.m.1.m.1.cv1.bn.weight'
+Freezing layer 'model.8.m.1.m.1.cv1.bn.bias'
+Freezing layer 'model.8.m.1.m.1.cv2.conv.weight'
+Freezing layer 'model.8.m.1.m.1.cv2.bn.weight'
+Freezing layer 'model.8.m.1.m.1.cv2.bn.bias'
+Freezing layer 'model.9.cv1.conv.weight'
+Freezing layer 'model.9.cv1.bn.weight'
+Freezing layer 'model.9.cv1.bn.bias'
+Freezing layer 'model.9.cv2.conv.weight'
+Freezing layer 'model.9.cv2.bn.weight'
+Freezing layer 'model.9.cv2.bn.bias'
+Freezing layer 'model.10.cv1.conv.weight'
+Freezing layer 'model.10.cv1.bn.weight'
+Freezing layer 'model.10.cv1.bn.bias'
+Freezing layer 'model.10.cv2.conv.weight'
+Freezing layer 'model.10.cv2.bn.weight'
+Freezing layer 'model.10.cv2.bn.bias'
+Freezing layer 'model.10.m.0.attn.qkv.conv.weight'
+Freezing layer 'model.10.m.0.attn.qkv.bn.weight'
+Freezing layer 'model.10.m.0.attn.qkv.bn.bias'
+Freezing layer 'model.10.m.0.attn.proj.conv.weight'
+Freezing layer 'model.10.m.0.attn.proj.bn.weight'
+Freezing layer 'model.10.m.0.attn.proj.bn.bias'
+Freezing layer 'model.10.m.0.attn.pe.conv.weight'
+Freezing layer 'model.10.m.0.attn.pe.bn.weight'
+Freezing layer 'model.10.m.0.attn.pe.bn.bias'
+Freezing layer 'model.10.m.0.ffn.0.conv.weight'
+Freezing layer 'model.10.m.0.ffn.0.bn.weight'
+Freezing layer 'model.10.m.0.ffn.0.bn.bias'
+Freezing layer 'model.10.m.0.ffn.1.conv.weight'
+Freezing layer 'model.10.m.0.ffn.1.bn.weight'
+Freezing layer 'model.10.m.0.ffn.1.bn.bias'
+Freezing layer 'model.10.m.1.attn.qkv.conv.weight'
+Freezing layer 'model.10.m.1.attn.qkv.bn.weight'
+Freezing layer 'model.10.m.1.attn.qkv.bn.bias'
+Freezing layer 'model.10.m.1.attn.proj.conv.weight'
+Freezing layer 'model.10.m.1.attn.proj.bn.weight'
+Freezing layer 'model.10.m.1.attn.proj.bn.bias'
+Freezing layer 'model.10.m.1.attn.pe.conv.weight'
+Freezing layer 'model.10.m.1.attn.pe.bn.weight'
+Freezing layer 'model.10.m.1.attn.pe.bn.bias'
+Freezing layer 'model.10.m.1.ffn.0.conv.weight'
+Freezing layer 'model.10.m.1.ffn.0.bn.weight'
+Freezing layer 'model.10.m.1.ffn.0.bn.bias'
+Freezing layer 'model.10.m.1.ffn.1.conv.weight'
+Freezing layer 'model.10.m.1.ffn.1.bn.weight'
+Freezing layer 'model.10.m.1.ffn.1.bn.bias'
+Freezing layer 'model.13.cv1.conv.weight'
+Freezing layer 'model.13.cv1.bn.weight'
+Freezing layer 'model.13.cv1.bn.bias'
+Freezing layer 'model.13.cv2.conv.weight'
+Freezing layer 'model.13.cv2.bn.weight'
+Freezing layer 'model.13.cv2.bn.bias'
+Freezing layer 'model.13.m.0.cv1.conv.weight'
+Freezing layer 'model.13.m.0.cv1.bn.weight'
+Freezing layer 'model.13.m.0.cv1.bn.bias'
+Freezing layer 'model.13.m.0.cv2.conv.weight'
+Freezing layer 'model.13.m.0.cv2.bn.weight'
+Freezing layer 'model.13.m.0.cv2.bn.bias'
+Freezing layer 'model.13.m.0.cv3.conv.weight'
+Freezing layer 'model.13.m.0.cv3.bn.weight'
+Freezing layer 'model.13.m.0.cv3.bn.bias'
+Freezing layer 'model.13.m.0.m.0.cv1.conv.weight'
+Freezing layer 'model.13.m.0.m.0.cv1.bn.weight'
+Freezing layer 'model.13.m.0.m.0.cv1.bn.bias'
+Freezing layer 'model.13.m.0.m.0.cv2.conv.weight'
+Freezing layer 'model.13.m.0.m.0.cv2.bn.weight'
+Freezing layer 'model.13.m.0.m.0.cv2.bn.bias'
+Freezing layer 'model.13.m.0.m.1.cv1.conv.weight'
+Freezing layer 'model.13.m.0.m.1.cv1.bn.weight'
+Freezing layer 'model.13.m.0.m.1.cv1.bn.bias'
+Freezing layer 'model.13.m.0.m.1.cv2.conv.weight'
+Freezing layer 'model.13.m.0.m.1.cv2.bn.weight'
+Freezing layer 'model.13.m.0.m.1.cv2.bn.bias'
+Freezing layer 'model.13.m.1.cv1.conv.weight'
+Freezing layer 'model.13.m.1.cv1.bn.weight'
+Freezing layer 'model.13.m.1.cv1.bn.bias'
+Freezing layer 'model.13.m.1.cv2.conv.weight'
+Freezing layer 'model.13.m.1.cv2.bn.weight'
+Freezing layer 'model.13.m.1.cv2.bn.bias'
+Freezing layer 'model.13.m.1.cv3.conv.weight'
+Freezing layer 'model.13.m.1.cv3.bn.weight'
+Freezing layer 'model.13.m.1.cv3.bn.bias'
+Freezing layer 'model.13.m.1.m.0.cv1.conv.weight'
+Freezing layer 'model.13.m.1.m.0.cv1.bn.weight'
+Freezing layer 'model.13.m.1.m.0.cv1.bn.bias'
+Freezing layer 'model.13.m.1.m.0.cv2.conv.weight'
+Freezing layer 'model.13.m.1.m.0.cv2.bn.weight'
+Freezing layer 'model.13.m.1.m.0.cv2.bn.bias'
+Freezing layer 'model.13.m.1.m.1.cv1.conv.weight'
+Freezing layer 'model.13.m.1.m.1.cv1.bn.weight'
+Freezing layer 'model.13.m.1.m.1.cv1.bn.bias'
+Freezing layer 'model.13.m.1.m.1.cv2.conv.weight'
+Freezing layer 'model.13.m.1.m.1.cv2.bn.weight'
+Freezing layer 'model.13.m.1.m.1.cv2.bn.bias'
+Freezing layer 'model.34.dfl.conv.weight'
+[34m[1mAMP: [0mrunning Automatic Mixed Precision (AMP) checks...
+[34m[1mAMP: [0mchecks passed ✅
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/root/.config/Ultralytics/DDP/_temp_pivcgxmc139723518198480.py", line 13, in <module>
+[rank0]:     results = trainer.train()
+[rank0]:               ^^^^^^^^^^^^^^^
+[rank0]:   File "/hy-tmp/ultralytics-8.3.184/ultralytics/engine/trainer.py", line 229, in train
+[rank0]:     self._do_train(world_size)
+[rank0]:   File "/hy-tmp/ultralytics-8.3.184/ultralytics/engine/trainer.py", line 348, in _do_train
+[rank0]:     self._setup_train(world_size)
+[rank0]:   File "/hy-tmp/ultralytics-8.3.184/ultralytics/engine/trainer.py", line 294, in _setup_train
+[rank0]:     self.model = nn.parallel.DistributedDataParallel(self.model, device_ids=[RANK], find_unused_parameters=True)
+[rank0]:                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.11/dist-packages/torch/nn/parallel/distributed.py", line 844, in __init__
+[rank0]:     _sync_module_states(
+[rank0]:   File "/usr/local/lib/python3.11/dist-packages/torch/distributed/utils.py", line 310, in _sync_module_states
+[rank0]:     _sync_params_and_buffers(process_group, module_states, broadcast_bucket_size, src)
+[rank0]:   File "/usr/local/lib/python3.11/dist-packages/torch/distributed/utils.py", line 321, in _sync_params_and_buffers
+[rank0]:     dist._broadcast_coalesced(
+[rank0]: RuntimeError: CUDA error: an illegal memory access was encountered
+[rank0]: CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[rank0]: For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[rank0]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/root/.config/Ultralytics/DDP/_temp_pivcgxmc139723518198480.py", line 13, in <module>
+[rank1]:     results = trainer.train()
+[rank1]:               ^^^^^^^^^^^^^^^
+[rank1]:   File "/hy-tmp/ultralytics-8.3.184/ultralytics/engine/trainer.py", line 229, in train
+[rank1]:     self._do_train(world_size)
+[rank1]:   File "/hy-tmp/ultralytics-8.3.184/ultralytics/engine/trainer.py", line 348, in _do_train
+[rank1]:     self._setup_train(world_size)
+[rank1]:   File "/hy-tmp/ultralytics-8.3.184/ultralytics/engine/trainer.py", line 294, in _setup_train
+[rank1]:     self.model = nn.parallel.DistributedDataParallel(self.model, device_ids=[RANK], find_unused_parameters=True)
+[rank1]:                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/usr/local/lib/python3.11/dist-packages/torch/nn/parallel/distributed.py", line 844, in __init__
+[rank1]:     _sync_module_states(
+[rank1]:   File "/usr/local/lib/python3.11/dist-packages/torch/distributed/utils.py", line 310, in _sync_module_states
+[rank1]:     _sync_params_and_buffers(process_group, module_states, broadcast_bucket_size, src)
+[rank1]:   File "/usr/local/lib/python3.11/dist-packages/torch/distributed/utils.py", line 321, in _sync_params_and_buffers
+[rank1]:     dist._broadcast_coalesced(
+[rank1]: RuntimeError: CUDA error: an illegal memory access was encountered
+[rank1]: CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+[rank1]: For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+[rank1]: Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

@@ -1,0 +1,48 @@
+# 必需参数
+pretrained_model: /hy-tmp/runs/detect/yolov11_drone_phaseC 0.725/weights/best.pt  # 您已经训练好的权重，mAP50=0.725
+model_config: /hy-tmp/ultralytics-8.3.184/ultralytics/cfg/models/11/yolo11s.yaml  # 模型配置文件路径
+data: /hy-tmp/ultralytics-8.3.184/data/data/data.yaml
+
+# 输出目录
+output_dir: ./runs/finetune
+
+# 训练参数
+epochs: 500
+batch: 6
+imgsz: 896
+patience: 30
+project_name: yolov11s_finetune
+
+# 优化器参数 - 使用较小的学习率
+lr0: 0.0002
+lrf: 0.01
+momentum: 0.9
+weight_decay: 0.0005
+warmup_epochs: 5.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# 损失权重
+box: 7.5
+cls: 0.5
+dfl: 1.5
+
+# 数据增强参数
+hsv_h: 0.01
+hsv_s: 0.5
+hsv_v: 0.3
+degrees: 2.0
+translate: 0.05
+scale: 0.3
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.3
+mosaic: 0.8
+mixup: 0.0
+copy_paste: 0.0
+
+# 其他参数
+device: '0'
+workers: 16
+close_mosaic: 10
